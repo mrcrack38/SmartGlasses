@@ -5,6 +5,10 @@
 
 from tkinter import *
 from tkinter import messagebox
+import picamera
+import time
+#test git
+
 
 running = True  # Global flag
 idx = 0  # loop index
