@@ -5,7 +5,8 @@
 
 from tkinter import *
 from tkinter import messagebox
-import picamera
+from picamera import PiCamera
+
 import time
 #test git
 
@@ -13,23 +14,27 @@ import time
 running = True  # Global flag
 idx = 0  # loop index
 
+# Camera setting
+# with picamera.PiCamera() as camera:
+# camera.resolution = (1024, 768)
+
+camera = PiCamera()
+camera.resolution = (1024, 768)
+
+
 def start():
     """Enable Capturing by setting the global flag to True."""
     global running
     running = True
     messagebox.showinfo("Camera mode","Start image grab")
-
-    with picamera.PiCamera() as camera:
-        camera.resolution = (1024, 768)
-        camera.start_preview()
+    camera.start_preview(fullscreen=False, window = (100,20,612,404))
 
 def stop():
     """Stop Capturing by setting the global flag to False."""
     global running
     running = False
     messagebox.showinfo("Camera mode","Stop image grab")
-    with picamera.PiCamera() as camera:
-        camera.stop_preview()
+    camera.stop_preview()
 
 
 root = Tk()
